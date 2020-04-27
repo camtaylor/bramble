@@ -21,3 +21,12 @@ def cocktail_search(request, search_string):
 
   serializer = CocktailSerializer(search_results, many=True)
   return Response(serializer.data)
+
+@api_view(['GET'])
+def ingredient_search(request, search_string):
+  cocktail_search = Cocktail.objects.filter(ingredients__icontains=search_string)
+  search_results = list(cocktail_search.all())
+  search_results = sorted(search_results, key=lambda cocktail: nltk.edit_distance(cocktail.name, search_string))
+
+  serializer = CocktailSerializer(search_results, many=True)
+  return Response(serializer.data)
