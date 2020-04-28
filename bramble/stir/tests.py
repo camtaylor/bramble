@@ -1,50 +1,52 @@
 from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
+from rest_framework.authtoken.models import Token
 
 
 
 class BrambleTestCase(APITestCase):
 
   """
-
-
-  TODO: create test table "cocktails" since cocktail model is not managed.
-  TODO: write login function to log in as admin.
+  Base class for bramble test cases. This imports 'initial_data.json' to populate the test db.
   """
 
+  fixtures = ['intial_data.json']
+
+
   def login(self):
-    pass
+    try:
+      user = User.objects.get_by_natural_key("test")
+    except Exception as e:
+      user = User.objects.create_user(username="test")
+      user.set_password('testpassword')
+      user.is_staff = True
+      user.save()
+    self.client.login(username="test", password="testpassword")
+
 
 
 
 class CocktailCursorTest(BrambleTestCase):
+  """
+  Test case for obtaining a single cocktail at a cursor.
+  """
   def test_cursor(self):
-
-    example_output = """
-    {
-    "name": "'Martini' Thyme",
-    "ingredients": [
-        "2 sprig   Lemon thyme (remove stalks)",
-        "1 oz    Gin",
-        ".75 oz   Green Chartreuse",
-        ".25 oz    Giffard Sugar Cane Syrup"
-    ],
-    "instructions": [
-        "MUDDLE thyme in base of shaker. Add other ingredients, SHAKE with ice and fine strain into chilled glass."
-    ],
-    "garnishes": [
-        "Olives on thyme sprig"
-    ],
-    "glass": [
-        "Martini glass"
-    ]
-    }"""
-
-
-    response = self.client.get('/stir/cocktail/1')
+    response = self.client.get('/stir/cocktail/43')
     self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
     self.login()
-    response = self.client.get('/stir/cocktail/1')
+    response = self.client.get('/stir/cocktail/43')
     self.assertEqual(response.status_code, status.HTTP_200_OK)
     print(response.data)
+
+
+class CocktailSearchTest(BrambleTestCase):
+  """
+  Test case to return results of a search query.
+  """
+  def test_search(self):
+    response = self.client.get('/stir/search/white russian/')
+    self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+    self.login()
+    response = self.client.get('/stir/search/white russian/')
+    self.assertEqual(response.status_code, status.HTTP_200_OK)

@@ -15,5 +15,4 @@ class Cocktail(models.Model):
   glass = JSONField()
 
   class Meta:
-    managed = False
     db_table = 'cocktails'
