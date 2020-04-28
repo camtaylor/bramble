@@ -2,47 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ec7e2f4-41af-4ea4-a3bb-59af81c6228f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/data/JSON/webtender_list_backup.json" />
-      <change beforePath="$PROJECT_DIR$/.idea/bramble.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/bramble/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bramble/bramble/settings.py" afterPath="$PROJECT_DIR$/bramble/bramble/settings.py" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/bramble/stir/migrations/0001_initial.py" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/migrations/0002_auto_20200423_0404.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/migrations/0003_auto_20200423_0409.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/migrations/0004_auto_20200423_0423.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/migrations/0005_auto_20200423_0435.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/migrations/0006_auto_20200423_0438.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/migrations/0007_auto_20200423_0441.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/migrations/0008_delete_cocktails.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/migrations/0009_cocktails.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/migrations/0010_auto_20200423_0506.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/migrations/0011_auto_20200423_0509.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/migrations/0012_auto_20200423_0513.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/tests.py" afterPath="$PROJECT_DIR$/bramble/stir/tests.py" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/urls.py" afterPath="$PROJECT_DIR$/bramble/stir/urls.py" />
-      <change beforePath="$PROJECT_DIR$/bramble/stir/views.py" afterPath="$PROJECT_DIR$/bramble/stir/views.py" />
-      <change beforePath="$PROJECT_DIR$/bramble_env/bin/activate" afterPath="$PROJECT_DIR$/bramble_env/bin/activate" />
-      <change beforePath="$PROJECT_DIR$/bramble_env/bin/activate.csh" afterPath="$PROJECT_DIR$/bramble_env/bin/activate.csh" />
-      <change beforePath="$PROJECT_DIR$/bramble_env/bin/activate.fish" afterPath="$PROJECT_DIR$/bramble_env/bin/activate.fish" />
-      <change beforePath="$PROJECT_DIR$/bramble_env/bin/django-admin" afterPath="$PROJECT_DIR$/bramble_env/bin/django-admin" />
-      <change beforePath="$PROJECT_DIR$/bramble_env/bin/django-admin.py" afterPath="$PROJECT_DIR$/bramble_env/bin/django-admin.py" />
-      <change beforePath="$PROJECT_DIR$/bramble_env/bin/easy_install" afterPath="$PROJECT_DIR$/bramble_env/bin/easy_install" />
-      <change beforePath="$PROJECT_DIR$/bramble_env/bin/easy_install-3.6" afterPath="$PROJECT_DIR$/bramble_env/bin/easy_install-3.6" />
-      <change beforePath="$PROJECT_DIR$/bramble_env/bin/nltk" afterPath="$PROJECT_DIR$/bramble_env/bin/nltk" />
-      <change beforePath="$PROJECT_DIR$/bramble_env/bin/pip" afterPath="$PROJECT_DIR$/bramble_env/bin/pip" />
-      <change beforePath="$PROJECT_DIR$/bramble_env/bin/pip3" afterPath="$PROJECT_DIR$/bramble_env/bin/pip3" />
-      <change beforePath="$PROJECT_DIR$/bramble_env/bin/pip3.6" afterPath="$PROJECT_DIR$/bramble_env/bin/pip3.6" />
-      <change beforePath="$PROJECT_DIR$/bramble_env/bin/sqlformat" afterPath="$PROJECT_DIR$/bramble_env/bin/sqlformat" />
-      <change beforePath="$PROJECT_DIR$/bramble_env/bin/tqdm" afterPath="$PROJECT_DIR$/bramble_env/bin/tqdm" />
-      <change beforePath="$PROJECT_DIR$/data/bramble.bak" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/data/cocktail_list.json" afterPath="$PROJECT_DIR$/data/JSON/cocktail_list.json" />
-      <change beforePath="$PROJECT_DIR$/data/cocktail_list_backup.json" afterPath="$PROJECT_DIR$/data/JSON/cocktail_list_backup.json" />
-      <change beforePath="$PROJECT_DIR$/data/diffords_list.json" afterPath="$PROJECT_DIR$/data/JSON/diffords_list.json" />
-      <change beforePath="$PROJECT_DIR$/data/diffords_list_backup.json" afterPath="$PROJECT_DIR$/data/JSON/diffords_list_backup.json" />
-      <change beforePath="$PROJECT_DIR$/data/webtender_list.json" afterPath="$PROJECT_DIR$/data/JSON/webtender_list.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,7 +14,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tests.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bramble/stir/tests.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="121">
@@ -61,6 +22,16 @@
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="848">
+              <caret line="119" column="6" lean-forward="false" selection-start-line="119" selection-start-column="6" selection-end-line="119" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -149,6 +120,7 @@
         <option value="$PROJECT_DIR$/data/JSON/webtender_list_backup.json" />
         <option value="$PROJECT_DIR$/data/JSON/webtender_list.json" />
         <option value="$PROJECT_DIR$/bramble/stir/tests.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -190,6 +162,22 @@
               <item name="bramble_dev" type="b2602c69:ProjectViewProjectNode" />
               <item name="bramble_dev" type="462c0819:PsiDirectoryNode" />
               <item name="bramble" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bramble_dev" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bramble_dev" type="462c0819:PsiDirectoryNode" />
+              <item name="bramble" type="462c0819:PsiDirectoryNode" />
+              <item name="stir" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bramble_dev" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bramble_dev" type="462c0819:PsiDirectoryNode" />
+              <item name="bramble_env" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bramble_dev" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bramble_dev" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bramble_dev" type="b2602c69:ProjectViewProjectNode" />
@@ -238,6 +226,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="453" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -245,7 +234,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24986508" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24986508" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -339,7 +328,7 @@
         <state relative-caret-position="751">
           <caret line="141" column="40" lean-forward="false" selection-start-line="141" selection-start-column="40" selection-end-line="141" selection-end-column="40" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -359,6 +348,14 @@
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="848">
+          <caret line="119" column="6" lean-forward="false" selection-start-line="119" selection-start-column="6" selection-end-line="119" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
