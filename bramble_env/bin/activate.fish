@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/cameron/Code/bramble/bramble_env"
+set -gx VIRTUAL_ENV "/home/cameron/Code/bramble_dev/bramble_env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

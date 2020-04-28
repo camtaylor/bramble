@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/bramble.iml" filepath="$PROJECT_DIR$/.idea/bramble.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/bramble_dev.iml" filepath="$PROJECT_DIR$/.idea/bramble_dev.iml" />
     </modules>
   </component>
 </project>

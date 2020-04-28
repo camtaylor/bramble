@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/cameron/Code/bramble/bramble_env"
+VIRTUAL_ENV="/home/cameron/Code/bramble_dev/bramble_env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
@@ -74,6 +74,3 @@ fi
 if [ -n "${BASH:-}" -o -n "${ZSH_VERSION:-}" ] ; then
     hash -r
 fi
-
-# Add django settings.
-export DJANGO_SETTINGS_MODULE=bramble.settings

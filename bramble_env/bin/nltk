@@ -1,4 +1,4 @@
-#!/home/cameron/Code/bramble/bramble_env/bin/python3
+#!/home/cameron/Code/bramble_dev/bramble_env/bin/python3
 # EASY-INSTALL-ENTRY-SCRIPT: 'nltk==3.5','console_scripts','nltk'
 __requires__ = 'nltk==3.5'
 import re
