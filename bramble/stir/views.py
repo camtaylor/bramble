@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAdminUser
+from rest_framework.pagination import LimitOffsetPagination
 
 import nltk
 
@@ -21,9 +22,8 @@ class BrambleAPIView(APIView):
   Other functions as needed
 
   """
-  #For now, only allow admin to access api.
+  # For now, only allow admin to access api.
   permission_classes = [IsAdminUser]
-
 
 class CocktailCursor(BrambleAPIView):
   """
@@ -31,6 +31,7 @@ class CocktailCursor(BrambleAPIView):
 
   TODO: Change id to a hashed representation so database can not be iterated.
   """
+
   def get(self, request, id):
     cocktail = Cocktail.objects.get(id=id)
     serializer = CocktailSerializer(cocktail)
@@ -45,7 +46,6 @@ class CocktailSearch(BrambleAPIView):
   TODO: Improve and optimise edit distance/filtering.
   """
 
-
   def get(self, request, search_string):
     cocktail_search = Cocktail.objects.filter(name__icontains=search_string)
     search_results = list(cocktail_search.all())
@@ -54,14 +54,12 @@ class CocktailSearch(BrambleAPIView):
     return Response(serializer.data)
 
 
-
 class IngredientSearch(BrambleAPIView):
   """
   Search for cocktails containing an ingredient.
 
   TODO: Remove class and include ingredient search in "Cocktail Search"
   """
-
 
   def get(self, request, search_string):
     cocktail_search = Cocktail.objects.filter(ingredients__icontains=search_string)

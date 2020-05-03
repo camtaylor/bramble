@@ -4,15 +4,12 @@ from rest_framework.test import APITestCase, APIClient
 from rest_framework.authtoken.models import Token
 
 
-
 class BrambleTestCase(APITestCase):
-
   """
   Base class for bramble test cases. This imports 'initial_data.json' to populate the test db.
   """
 
   fixtures = ['intial_data.json']
-
 
   def login(self):
     try:
@@ -25,12 +22,11 @@ class BrambleTestCase(APITestCase):
     self.client.login(username="test", password="testpassword")
 
 
-
-
 class CocktailCursorTest(BrambleTestCase):
   """
   Test case for obtaining a single cocktail at a cursor.
   """
+
   def test_cursor(self):
     response = self.client.get('/stir/cocktail/43')
     self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -44,6 +40,7 @@ class CocktailSearchTest(BrambleTestCase):
   """
   Test case to return results of a search query.
   """
+
   def test_search(self):
     response = self.client.get('/stir/search/white russian/')
     self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)

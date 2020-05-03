@@ -1,8 +1,11 @@
 import json
-from collections import Counter
+# from collections import Counter
+# import pandas as pd
+# from sklearn.preprocessing import MultiLabelBinarizer
+# from sklearn.metrics.pairwise import cosine_similarity
+from collections import defaultdict
+import numpy as np
 import pandas as pd
-from sklearn.preprocessing import MultiLabelBinarizer
-from sklearn.metrics.pairwise import cosine_similarity
 
 
 def get_cocktail_list(filename):
@@ -130,15 +133,21 @@ def cocktail_cosine(cocktail_frame1,cocktail_frame2):
 
 if __name__ == "__main__":
 
-  cocktail_list = get_cocktail_list("JSON/webtender_list.json")
-  ingredients = []
-  coincidence_list = []
-  cocktail_names = []
-  cocktails = {}
+  cocktail_json = get_cocktail_list("bramble_list.json")
+  cocktail_index = {}
+  ingredients = defaultdict(list)
+  ingredient_vectors = {}
 
 
-  for cocktail in cocktail_list:
-    cocktails[cocktail["name"].lower().strip()] = cocktail["ingredients"]
-    coincidence_list.append([ingredient for ingredient in cocktail["ingredients"]])
-  coincidence_matrix = get_coincidence_frame(coincidence_list)
-  print(cocktail_cosine(coincidence_matrix["vodka"], coincidence_matrix["bourbon"]))
+  for index, cocktail in enumerate(cocktail_json):
+    ingredient_list = [ingredient["ingredient"] for ingredient in cocktail["measured_ingredients"]]
+    cocktail_index[cocktail["name"]] = index
+    for ingredient in ingredient_list:
+      ingredients[ingredient].append(index)
+
+  for ingredient, indices in ingredients.items():
+    ingredient = ingredient.strip().lower()
+    ingredient_vectors[ingredient] = np.zeros(len(cocktail_json), dtype=np.bool)
+    ingredient_vectors[ingredient][indices] = True
+
+  data_frame = pd.DataFrame.from_dict(ingredient_vectors)

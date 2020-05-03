@@ -3,6 +3,8 @@ from .models import Cocktail
 
 
 class CocktailSerializer(serializers.ModelSerializer):
+
+
     class Meta:
-        model = Cocktail
-        fields = ['name', 'ingredients', 'instructions', 'garnishes', 'glass']
+      model = Cocktail
+      fields = ['name', 'ingredients', 'instructions', 'garnishes', 'glass', '_links']
