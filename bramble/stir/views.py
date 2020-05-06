@@ -1,15 +1,14 @@
 from .models import Cocktail
 from .serializers import CocktailSerializer
-
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAdminUser
 from rest_framework.pagination import PageNumberPagination
+from django.contrib.postgres.search import TrigramSimilarity
 
-import nltk
-
-
-
+from django.db import connection
+with connection.cursor() as cursor:
+  cursor.execute('CREATE EXTENSION IF NOT EXISTS pg_trgm')
 
 class BrambleAPIView(APIView, PageNumberPagination):
   """
@@ -55,11 +54,11 @@ class CocktailSearch(BrambleAPIView):
   Search for a cocktail to make based on a given query string.
 
   TODO: Design a query language to search cocktail DB.
-  TODO: Improve and optimise edit distance/filtering.
   """
 
   def get_queryset(self, search_string, request):
-    cocktail_search = Cocktail.objects.filter(name__icontains=search_string)
+    cocktail_search = Cocktail.objects.annotate(similarity=TrigramSimilarity('name', search_string))\
+      .filter(similarity__gt=0.3).order_by('-similarity')
     return self.paginate_queryset(cocktail_search, request)
 
   def get(self, request, search_string):
@@ -75,6 +74,7 @@ class IngredientSearch(BrambleAPIView):
   Search for cocktails containing an ingredient.
 
   TODO: Remove class and include ingredient search in "Cocktail Search"
+  TODO: Make sorting for ingredients similarity.
   """
 
   def get_queryset(self, search_string, request):
@@ -83,9 +83,5 @@ class IngredientSearch(BrambleAPIView):
 
   def get(self, request, search_string):
     cocktail_search = self.get_queryset(search_string, request)
-
-    # search_results = list(cocktail_search.all())
-    # search_results = sorted(search_results, key=lambda cocktail: nltk.edit_distance(cocktail.name, search_string))
-
     serializer = CocktailSerializer(cocktail_search, many=True)
     return self.get_paginated_response(serializer.data)
