@@ -18,11 +18,12 @@ from django.urls import path, include
 from rest_framework import routers
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import APIDirectory
 
 router = routers.DefaultRouter()
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', APIDirectory.as_view()),
     path('admin/', admin.site.urls),
     path('stir/', include('stir.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
