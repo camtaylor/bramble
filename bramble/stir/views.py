@@ -67,37 +67,26 @@ class CocktailSearch(BrambleAPIView):
   TODO: Design a query language to search cocktail DB.
   """
 
-  def get_queryset(self, search_string, request):
-    cocktail_search = Cocktail.objects.annotate(similarity=TrigramSimilarity('name', search_string))\
-      .filter(similarity__gt=0.3).order_by('-similarity')
-    return self.paginate_queryset(cocktail_search, request)
+  def get_queryset(self, request):
+
+
+    search_string = request.query_params.get("search")
+    ingredients = request.query_params.get("ingredients")
+    cocktails = Cocktail.objects.all()
+    if search_string:
+      cocktails = cocktails.annotate(similarity=TrigramSimilarity('name', search_string))\
+        .filter(similarity__gt=0.3).order_by('-similarity')
+    if ingredients:
+      ingredients_regex = "^{}.*$".format("".join(
+        ["(?=.*{})".format(ingredient) for ingredient in ingredients.split(",")]))
+
+      cocktails = cocktails.filter(ingredients__iregex=ingredients_regex)
+    return self.paginate_queryset(cocktails, request)
 
   def get(self, request):
 
-    # Get Search string from parameters
-    #TODO check if param exists.
-    search_string = request.GET["search"]
 
+    cocktail_search = self.get_queryset(request)
 
-
-    cocktail_search = self.get_queryset(search_string, request)
-    serializer = CocktailSerializer(cocktail_search, many=True, context={'request': request})
-    return self.get_paginated_response(serializer.data)
-
-
-class IngredientSearch(BrambleAPIView):
-  """
-  Search for cocktails containing an ingredient.
-
-  TODO: Remove class and include ingredient search in "Cocktail Search"
-  TODO: Make sorting for ingredients similarity.
-  """
-
-  def get_queryset(self, search_string, request):
-    cocktail_search = Cocktail.objects.filter(ingredients__icontains=search_string)
-    return self.paginate_queryset(cocktail_search, request)
-
-  def get(self, request, search_string):
-    cocktail_search = self.get_queryset(search_string, request)
     serializer = CocktailSerializer(cocktail_search, many=True, context={'request': request})
     return self.get_paginated_response(serializer.data)
