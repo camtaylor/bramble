@@ -15,11 +15,5 @@ class Cocktail(models.Model):
   glass = JSONField()
 
 
-  def _links(self):
-    links = {}
-    links["self"] = "/stir/cocktail/{}".format(self.id)
-    return links
-
-
   class Meta:
     db_table = 'cocktails'

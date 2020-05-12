@@ -26,14 +26,25 @@ class BrambleAPIView(APIView, PageNumberPagination):
   permission_classes = [IsAdminUser]
 
   def get_paginated_response(self, data):
-    return Response({
+
+    response_dict = {
       '_links': {
-        'next': self.get_next_link(),
-        'previous': self.get_previous_link()
+        'self': {'href': self.request.build_absolute_uri()}
       },
       'count': self.page.paginator.count,
       'results': data
-    })
+    }
+
+    next_page = self.get_next_link()
+    prev_page = self.get_previous_link()
+
+    if next_page is not None:
+      response_dict['_links']['next'] = {'href': next_page}
+    if prev_page is not None:
+      response_dict['_links']['previous'] = {'href': prev_page}
+
+
+    return Response(response_dict)
 
 
 class CocktailCursor(BrambleAPIView):
@@ -45,7 +56,7 @@ class CocktailCursor(BrambleAPIView):
 
   def get(self, request, id):
     cocktail = Cocktail.objects.get(id=id)
-    serializer = CocktailSerializer(cocktail)
+    serializer = CocktailSerializer(cocktail, context={'request': request})
     return Response(serializer.data)
 
 
@@ -63,9 +74,7 @@ class CocktailSearch(BrambleAPIView):
 
   def get(self, request, search_string):
     cocktail_search = self.get_queryset(search_string, request)
-    # search_results = list(cocktail_search.all())
-    # search_results = sorted(search_results, key=lambda cocktail: nltk.edit_distance(cocktail.name, search_string))
-    serializer = CocktailSerializer(cocktail_search, many=True)
+    serializer = CocktailSerializer(cocktail_search, many=True, context={'request': request})
     return self.get_paginated_response(serializer.data)
 
 
@@ -83,5 +92,5 @@ class IngredientSearch(BrambleAPIView):
 
   def get(self, request, search_string):
     cocktail_search = self.get_queryset(search_string, request)
-    serializer = CocktailSerializer(cocktail_search, many=True)
+    serializer = CocktailSerializer(cocktail_search, many=True, context={'request': request})
     return self.get_paginated_response(serializer.data)
