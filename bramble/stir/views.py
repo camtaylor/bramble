@@ -72,7 +72,14 @@ class CocktailSearch(BrambleAPIView):
       .filter(similarity__gt=0.3).order_by('-similarity')
     return self.paginate_queryset(cocktail_search, request)
 
-  def get(self, request, search_string):
+  def get(self, request):
+
+    # Get Search string from parameters
+    #TODO check if param exists.
+    search_string = request.GET["search"]
+
+
+
     cocktail_search = self.get_queryset(search_string, request)
     serializer = CocktailSerializer(cocktail_search, many=True, context={'request': request})
     return self.get_paginated_response(serializer.data)
