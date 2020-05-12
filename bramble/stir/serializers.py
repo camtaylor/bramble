@@ -16,7 +16,7 @@ class CocktailSerializer(serializers.ModelSerializer):
 
   def get__links(self, obj):
     request = self.context.get('request')
-    self_link = request.build_absolute_uri('/stir/cocktail/{}/'.format(obj.id))
+    self_link = request.build_absolute_uri('/stir/cocktail/{}'.format(obj.id))
     links = {}
     links["self"] = {'href': self_link}
     return links
