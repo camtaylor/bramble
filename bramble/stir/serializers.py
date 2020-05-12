@@ -11,7 +11,7 @@ class CocktailSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = Cocktail
-    fields = ['name', 'ingredients', 'instructions', 'garnishes', 'glass', '_links']
+    fields = ['name', 'ingredients', 'instructions', 'measurements', 'garnishes', 'glass', '_links']
 
 
   def get__links(self, obj):

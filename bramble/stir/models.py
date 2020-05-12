@@ -12,8 +12,10 @@ class Cocktail(models.Model):
   ingredients = JSONField()
   instructions = JSONField()
   garnishes = JSONField()
+  measurements = JSONField()
   glass = JSONField()
 
 
   class Meta:
-    db_table = 'cocktails'
+    db_table = 'cocktails_2'
+    managed = False

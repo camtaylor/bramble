@@ -18,8 +18,6 @@ class APIDirectory(BrambleAPIView):
 
       "cocktail_cursor": "/stir/cocktail/<str:id>",
 
-      "cocktail_search": "/stir/search/<str:search_string>",
-
-      "ingredient_search": "/stir/ingredients/<str:search_string>"
+      "cocktail_search": "/stir/search/<str:search_string>"
     }
     return Response({"_links" : link_dict})

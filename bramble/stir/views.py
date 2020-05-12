@@ -70,11 +70,11 @@ class CocktailSearch(BrambleAPIView):
   def get_queryset(self, request):
 
 
-    search_string = request.query_params.get("search")
+    name = request.query_params.get("name")
     ingredients = request.query_params.get("ingredients")
     cocktails = Cocktail.objects.all()
-    if search_string:
-      cocktails = cocktails.annotate(similarity=TrigramSimilarity('name', search_string))\
+    if name:
+      cocktails = cocktails.annotate(similarity=TrigramSimilarity('name', name))\
         .filter(similarity__gt=0.3).order_by('-similarity')
     if ingredients:
       ingredients_regex = "^{}.*$".format("".join(
