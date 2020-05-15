@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.postgres.fields.jsonb import JSONField
 
+
 # Create your models here.
 
 class Cocktail(models.Model):
@@ -14,7 +15,6 @@ class Cocktail(models.Model):
   garnishes = JSONField()
   measurements = JSONField()
   glass = JSONField()
-
 
   class Meta:
     db_table = 'cocktails_2'

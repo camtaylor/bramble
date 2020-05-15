@@ -10,9 +10,9 @@ import re
 from django.urls import get_resolver
 from django.urls import resolve
 
-
 with connection.cursor() as cursor:
   cursor.execute('CREATE EXTENSION IF NOT EXISTS pg_trgm')
+
 
 class BrambleAPIView(APIView, PageNumberPagination):
   """
@@ -41,7 +41,7 @@ class BrambleAPIView(APIView, PageNumberPagination):
 
   def build_uri_from_root(self, resource):
     host = self.build_uri("/")
-    return host+resource
+    return host + resource
 
   def get_paginated_response(self, data):
 
@@ -60,7 +60,6 @@ class BrambleAPIView(APIView, PageNumberPagination):
       response_dict['_links']['next'] = {'href': next_page}
     if prev_page is not None:
       response_dict['_links']['previous'] = {'href': prev_page}
-
 
     return Response(response_dict)
 
@@ -86,13 +85,13 @@ class APIDirectory(BrambleAPIView):
     """
 
     root_url = self.get_self_link()
-    #Get all url paths from the django project
+    # Get all url paths from the django project
     all_urls = set(v[1].replace("\\", "").replace("$", "") for k, v in get_resolver(None).reverse_dict.items())
-    #Turn paths into hyperlinks
+    # Turn paths into hyperlinks
     all_links = [self.build_uri_from_root(url) for url in all_urls]
-    #Ensure that links are children of current path
+    # Ensure that links are children of current path
     descending_links = [link for link in all_links if root_url in link and root_url != link]
-    #Return only direct children, not grandchildren etc.
+    # Return only direct children, not grandchildren etc.
     resources = [re.search(r'{}[^/]*/'.format(root_url), link).group(0) for link in descending_links]
     return resources
 
@@ -111,8 +110,7 @@ class APIDirectory(BrambleAPIView):
       resource_dict[resource_name]["_links"]["self"] = {}
       resource_dict[resource_name]["_links"]["self"]["href"] = self.build_uri(resource_name)
 
-    return {"_links" : link_dict}
-
+    return {"_links": link_dict}
 
   def get(self, request):
     directory = self.build_directory()
@@ -141,12 +139,11 @@ class CocktailSearch(BrambleAPIView):
 
   def get_queryset(self, request):
 
-
     name = request.query_params.get("name")
     ingredients = request.query_params.get("ingredients")
     cocktails = Cocktail.objects.all()
     if name:
-      cocktails = cocktails.annotate(similarity=TrigramSimilarity('name', name))\
+      cocktails = cocktails.annotate(similarity=TrigramSimilarity('name', name)) \
         .filter(similarity__gt=0.3).order_by('-similarity')
     if ingredients:
       ingredients_regex = "^{}.*$".format("".join(
