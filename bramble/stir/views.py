@@ -125,7 +125,7 @@ class CocktailCursor(BrambleAPIView):
   """
 
   def get(self, request, id):
-    cocktail = Cocktail.objects.get(id=id)
+    cocktail = Cocktail.objects.get(guid=id)
     serializer = CocktailSerializer(cocktail, context={'request': request})
     return Response(serializer.data)
 

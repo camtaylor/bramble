@@ -7,11 +7,11 @@ class CocktailSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = Cocktail
-    fields = ['name', 'ingredients', 'instructions', 'measurements', 'garnishes', 'glass', '_links']
+    fields = ['name', 'ingredients', 'instructions', 'measurements', 'garnishes', 'glass', '_links', 'guid']
 
   def get__links(self, obj):
     request = self.context.get('request')
-    self_link = request.build_absolute_uri('/stir/cocktail/{}'.format(obj.id))
+    self_link = request.build_absolute_uri('/stir/cocktail/{}'.format(obj.guid))
     links = {}
     links["self"] = {'href': self_link}
     return links

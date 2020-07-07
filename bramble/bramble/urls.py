@@ -25,5 +25,7 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path('', APIDirectory.as_view()),
     path('admin/', admin.site.urls),
-    path('stir/', include('stir.urls'))
+    path('stir/', include('stir.urls')),
+    path('users/', include('users.urls')),
+    path('profiles/', include('profiles.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

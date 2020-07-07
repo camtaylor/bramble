@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.postgres.fields.jsonb import JSONField
+import uuid
 
 
 # Create your models here.
@@ -15,6 +16,8 @@ class Cocktail(models.Model):
   garnishes = JSONField()
   measurements = JSONField()
   glass = JSONField()
+  guid = models.UUIDField(default=uuid.uuid4,
+         editable=False)
 
   class Meta:
     db_table = 'cocktails_2'
